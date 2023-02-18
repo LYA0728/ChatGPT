@@ -2,6 +2,7 @@
 /* https://fastly.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/style.css */
 @import url("https://fastly.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/mobile.css") screen and (max-width:764px);
 
+
 /* CSS变量 */
 :root {
   /* --bg: rgba(95, 95, 95, 95); */
