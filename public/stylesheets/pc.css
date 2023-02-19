@@ -124,7 +124,7 @@ div.ChatGPT {
 
 /* 交互空间 */
 div.widget {
-    height: 8vh;
+    height: 75px;
     border-radius: 500px;
 }
 
