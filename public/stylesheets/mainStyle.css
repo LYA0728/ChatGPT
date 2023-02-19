@@ -1,6 +1,6 @@
-@import url("https://fastly.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/pc.css") screen and (min-width:765px);
+@import url("https://cdn.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/PC.css") screen and (min-width:765px);
 /* https://fastly.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/style.css */
-@import url("https://fastly.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/mobile.css") screen and (max-width:764px);
+@import url("https://fastly.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/mobileStyle.css") screen and (max-width:764px);
 
 
 /* CSS变量 */
