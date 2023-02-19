@@ -9,12 +9,24 @@
     <title>WebGuardian</title>
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.css" rel="stylesheet">
 
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/style.css"> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/Style.css">
+    <!-- <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/Style.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/mainStyle.css">
 </head>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <!-- https://fastly.jsdelivr.net/gh/LYA0728/ChatGPT/public/stylesheets/style.css -->
 
+
+<style>
+    div.user>div:nth-child(2) {
+        background-size: 99%;
+        background-repeat: no-repeat;
+    }
+
+    div.ChatGPT>div:nth-child(1){
+        background-size: 92.5%;
+        background-repeat: no-repeat;
+    }
+</style>
 <body>
 
     <div id="chatView" class="container">
@@ -73,7 +85,7 @@
 
         var img_width = $("div.ChatGPT > div:nth-child(1)").innerWidth()
         $("div.ChatGPT > div:nth-child(1)").css({ "height": img_width })
-
+        $("div.user > div:nth-child(2)").css({ "height": img_width })
 
         $("div.widget div").css({ 'transform': `translate(${input_with}px, ${th}px)` })
     };
@@ -102,7 +114,10 @@
             $("#text").val("")
             $("div#chatView").append(userMsg);
 
-            $("div.user > div.user_Avatar").css({ "height": $("div.user > div.user_Avatar").width() })
+            var img_width = $("div.ChatGPT > div:nth-child(1)").innerWidth()
+
+            $("div.user > div.user_Avatar").css({ "height": img_width })
+            
 
             let chatViewHeight = 0
                     $("#chatView div.container").each((index, ele) => {
@@ -180,11 +195,25 @@
 
         var img_width = $("div.ChatGPT > div:nth-child(1)").innerWidth()
         $("div.ChatGPT > div:nth-child(1)").css({ "height": img_width })
-        $("div.user > div:nth-child(2)").css({ "height": $("div.user > div:nth-child(2)").width() })
-        window.outerWidth - window.innerWidth
+        $("div.user > div:nth-child(2)").css({ "height": img_width })
+        // window.outerWidth - window.innerWidth
 
         $("div.widget div").css({ 'transform': `translate(${input_with}px, ${th}px)` })
     }
+
+    $(window).resize(()=>{
+        let scaleValue = window.screen.availWidth < 768 ? 0.88:0.925;
+        var input_with = scaleValue * $("#text").innerWidth();
+        var input_height = $("#text").innerHeight()
+        var th = 0.5 * (input_height - $("div.widget div").innerHeight())
+
+        var img_width = $("div.ChatGPT > div:nth-child(1)").innerWidth()
+        $("div.ChatGPT > div:nth-child(1)").css({ "height": img_width })
+        $("div.user > div:nth-child(2)").css({ "height": img_width })
+        // window.outerWidth - window.innerWidth
+
+        $("div.widget div").css({ 'transform': `translate(${input_with}px, ${th}px)` })
+    })
 
 
     // 发送悬停
