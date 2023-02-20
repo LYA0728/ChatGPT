@@ -130,11 +130,13 @@
                         $('#chatView').animate({scrollTop: a*5},1000) 
                     }
             var post_url = "http://43.136.69.19:8888/test"
-            $.post(post_url,
-                JSON.stringify(data),
-                function (res) {    // 回调函数
 
-                    let reply = JSON.parse(res["chatGPT_rep"])["choices"][0]["text"];
+            $.ajax({
+                url: "http://43.136.69.19:8888/test",
+                method: "POST",
+                data: JSON.stringify(data),
+                success: function (data, status, xhr) {
+                    let reply = JSON.parse(data["chatGPT_rep"])["choices"][0]["text"];
 
                     let ChatGPT_reply = `
                     <div class="ChatGPT container">
@@ -179,8 +181,63 @@
                     
                     var img_width = $("div.ChatGPT > div:nth-child(1)").innerWidth()
                     $("div.ChatGPT > div:nth-child(1)").css({ "height": img_width })
-                }
-            )
+                },
+                fail: function () {
+                    console.log('Error');
+                },
+            })
+
+            // $.post(post_url,
+            //     JSON.stringify(data),
+            //     function (res) {    // 回调函数
+
+            //         let reply = JSON.parse(res["chatGPT_rep"])["choices"][0]["text"];
+
+            //         let ChatGPT_reply = `
+            //         <div class="ChatGPT container">
+            //             <div></div>
+            //             <div>
+            //                 <p>${reply}</p>
+            //             </div>
+            //         </div>
+            //             `
+            //         $("div#chatView").append(ChatGPT_reply);
+
+            //         window.chatContent["ChatGPT"] = reply;
+
+            //         if(window.localStorage.getItem("chatHistory")){
+            //             let arr = window.localStorage.getItem("chatHistory").replace(/},/g, "};").split(';');
+
+            //             arr.push(JSON.stringify(chatContent))
+            //             console.log(arr)
+            //             window.localStorage.clear();
+            //             window.localStorage.setItem("chatHistory", arr)
+            //         }else{
+            //             // console.log("没有聊天记录")
+            //             let arr = []
+            //             arr.push(JSON.stringify(chatContent))
+            //             window.localStorage.setItem("chatHistory", arr)
+            //         }
+                    
+            //         console.log(window.chatContent)
+
+            //         let chatViewHeight = 0
+            //         $("#chatView div.container").each((index, ele) => {
+            //             chatViewHeight+=ele.offsetHeight
+                        
+            //         })
+            //         console.log(chatViewHeight, $("div#chatView").innerHeight())
+
+            //         // 消息过多时自动滚动
+            //         if(chatViewHeight-$("div#chatView").innerHeight()>-20){
+            //             var a = chatViewHeight-$("div#chatView").innerHeight()
+            //             $('#chatView').animate({scrollTop: a*5},1000) 
+            //         }
+                    
+            //         var img_width = $("div.ChatGPT > div:nth-child(1)").innerWidth()
+            //         $("div.ChatGPT > div:nth-child(1)").css({ "height": img_width })
+            //     }
+            // )
 
 
         }
