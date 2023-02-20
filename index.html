@@ -129,10 +129,10 @@
                         var a = chatViewHeight-$("div#chatView").innerHeight()
                         $('#chatView').animate({scrollTop: a*5},1000) 
                     }
-            var post_url = "http://43.136.69.19:8888/test"
+            var post_url = "https://43.136.69.19:8888/test"
 
             $.ajax({
-                url: "http://43.136.69.19:8888/test",
+                url: "https://43.136.69.19:8888/test",
                 method: "POST",
                 data: JSON.stringify(data),
                 success: function (data, status, xhr) {
