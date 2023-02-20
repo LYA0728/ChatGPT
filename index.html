@@ -129,7 +129,7 @@
                         var a = chatViewHeight-$("div#chatView").innerHeight()
                         $('#chatView').animate({scrollTop: a*5},1000) 
                     }
-            var post_url = "https://43.136.69.19:8888/test"
+            var post_url = "http://43.136.69.19:8888/test"
             $.post(post_url,
                 JSON.stringify(data),
                 function (res) {    // 回调函数
